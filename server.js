@@ -10,7 +10,7 @@ fastify.register(require("fastify-swagger"), {
   }
 })
 
-fastify.get('/message', (reg, reply) => {
+fastify.get('/message', (_req, reply) => {
   reply.send({test: 'we are ok'})
 })
 
