@@ -1,7 +1,13 @@
 const fastify = require("fastify")({logger: true});
+const fastifyEnv = require('fastify-env')
 
 const PORT = 5000
 
+
+fastify.register(require(fastifyEnv), {dotenv: true})
+fastify.register(require(pastify-postgres), {
+  connectionString: proccess.env.CONNECTION_STRING
+})
 fastify.register(require("fastify-swagger"), {
   exposeRoute: true,
   routePrefix: '/docs',
@@ -10,9 +16,7 @@ fastify.register(require("fastify-swagger"), {
   }
 })
 
-fastify.get('/message', (_req, reply) => {
-  reply.send({test: 'we are ok'})
-})
+fastify.register(require("./src/routes/index.js"));
 
 const start = async () => {
   try {
